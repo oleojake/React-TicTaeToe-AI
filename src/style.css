@@ -1,0 +1,166 @@
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+body {
+  padding: 20px;
+  margin: 0;
+  display: flex;
+  place-items: center;
+  place-content: center;
+  background-color: #25282E;
+  color:white;
+}
+
+.icon-bar {
+  position: fixed;
+  left: -40px;
+  top: 65vh;
+  transform: rotate(90deg);
+}
+
+.icon-bar a {
+  display: block;
+  text-align: center;
+  padding: 5px 10px;
+  transition: all 0.3s ease;
+  color: black;
+  font-size: 12px;
+  background-color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.icon-bar  a  i {
+  margin-right: 5px;
+}
+
+.icon-bar a:hover {
+  background-color: #00D8FF;
+  color: white
+}

@@ -1,0 +1,179 @@
+.container-info-turn {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	text-align: center;
+}
+
+.button-restart > span {
+	font-size: 32px;
+}
+
+.button-restart {
+	width: 25%;
+	margin-top: 15px;
+	margin-left: 15px;
+	font-size: 32px;
+	font-weight: bolder;
+	border: none;
+	cursor: pointer;
+	background-color: white;
+	color: black;
+	-webkit-box-shadow: 0px 0px 5px 2px #fff;
+	-moz-box-shadow: 0px 0px 5px 2px #fff;
+	box-shadow: 0px 0px 5px 2px #fff;
+	-webkit-animation: bounce-top 0.9s both;
+	animation: bounce-top 0.9s both;
+}
+
+.button-restart:hover {
+	background-color: #00c2bf;
+	-webkit-box-shadow: 0px 0px 5px 2px #00c2bf;
+	-moz-box-shadow: 0px 0px 5px 2px #00c2bf;
+	box-shadow: 0px 0px 5px 2px #00c2bf;
+}
+
+.button-restart-hidden {
+	display: none;
+}
+
+.info-turn {
+	width: 100%;
+	margin-top: 15px;
+	font-size: 32px;
+	font-weight: bold;
+}
+
+.xs-turn {
+	color: #f0f;
+}
+
+.os-turn {
+	color: #00d8ff;
+}
+
+.os-won {
+	background-color: #00d8ff;
+	transition: all 0.2s;
+	-webkit-animation: bounce-top 0.9s both;
+	animation: bounce-top 0.9s both;
+	-webkit-box-shadow: 0px 0px 5px 2px rgba(0, 217, 255, 0.9);
+	-moz-box-shadow: 0px 0px 5px 2px rgba(0, 217, 255, 0.9);
+	box-shadow: 0px 0px 5px 2px rgba(0, 217, 255, 0.9);
+}
+
+.xs-won {
+	background-color: #f0f;
+	transition: all 0.2s;
+	font-size: 32px;
+	-webkit-animation: bounce-top 0.9s both;
+	animation: bounce-top 0.9s both;
+	-webkit-box-shadow: 0px 0px 5px 2px #f0f;
+	-moz-box-shadow: 0px 0px 5px 2px #f0f;
+	box-shadow: 0px 0px 5px 2px #f0f;
+}
+
+@-webkit-keyframes bounce-top {
+	0% {
+		-webkit-transform: translateY(-45px);
+		transform: translateY(-45px);
+		-webkit-animation-timing-function: ease-in;
+		animation-timing-function: ease-in;
+		opacity: 1;
+	}
+	24% {
+		opacity: 1;
+	}
+	40% {
+		-webkit-transform: translateY(-24px);
+		transform: translateY(-24px);
+		-webkit-animation-timing-function: ease-in;
+		animation-timing-function: ease-in;
+	}
+	65% {
+		-webkit-transform: translateY(-12px);
+		transform: translateY(-12px);
+		-webkit-animation-timing-function: ease-in;
+		animation-timing-function: ease-in;
+	}
+	82% {
+		-webkit-transform: translateY(-6px);
+		transform: translateY(-6px);
+		-webkit-animation-timing-function: ease-in;
+		animation-timing-function: ease-in;
+	}
+	93% {
+		-webkit-transform: translateY(-4px);
+		transform: translateY(-4px);
+		-webkit-animation-timing-function: ease-in;
+		animation-timing-function: ease-in;
+	}
+	25%,
+	55%,
+	75%,
+	87% {
+		-webkit-transform: translateY(0px);
+		transform: translateY(0px);
+		-webkit-animation-timing-function: ease-out;
+		animation-timing-function: ease-out;
+	}
+	100% {
+		-webkit-transform: translateY(0px);
+		transform: translateY(0px);
+		-webkit-animation-timing-function: ease-out;
+		animation-timing-function: ease-out;
+		opacity: 1;
+	}
+}
+@keyframes bounce-top {
+	0% {
+		-webkit-transform: translateY(-45px);
+		transform: translateY(-45px);
+		-webkit-animation-timing-function: ease-in;
+		animation-timing-function: ease-in;
+		opacity: 1;
+	}
+	24% {
+		opacity: 1;
+	}
+	40% {
+		-webkit-transform: translateY(-24px);
+		transform: translateY(-24px);
+		-webkit-animation-timing-function: ease-in;
+		animation-timing-function: ease-in;
+	}
+	65% {
+		-webkit-transform: translateY(-12px);
+		transform: translateY(-12px);
+		-webkit-animation-timing-function: ease-in;
+		animation-timing-function: ease-in;
+	}
+	82% {
+		-webkit-transform: translateY(-6px);
+		transform: translateY(-6px);
+		-webkit-animation-timing-function: ease-in;
+		animation-timing-function: ease-in;
+	}
+	93% {
+		-webkit-transform: translateY(-4px);
+		transform: translateY(-4px);
+		-webkit-animation-timing-function: ease-in;
+		animation-timing-function: ease-in;
+	}
+	25%,
+	55%,
+	75%,
+	87% {
+		-webkit-transform: translateY(0px);
+		transform: translateY(0px);
+		-webkit-animation-timing-function: ease-out;
+		animation-timing-function: ease-out;
+	}
+	100% {
+		-webkit-transform: translateY(0px);
+		transform: translateY(0px);
+		-webkit-animation-timing-function: ease-out;
+		animation-timing-function: ease-out;
+		opacity: 1;
+	}
+}

@@ -1,0 +1,33 @@
+.square {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #25282e;
+	border: 2px solid white;
+	width: 150px;
+	height: 150px;
+	cursor: pointer;
+}
+
+.square > span {
+	font-size: 120px;
+	font-weight: bold;
+}
+
+.x {
+	color: #f0f;
+}
+
+.o {
+	color: #00d8ff;
+}
+
+@media (max-width: 480px) {
+	.square {
+		width: 100px;
+		height: 100px;
+	}
+	.square > span {
+		font-size: 70px;
+	}
+}
