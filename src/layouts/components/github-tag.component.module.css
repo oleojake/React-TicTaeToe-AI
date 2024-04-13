@@ -1,0 +1,27 @@
+.icon-bar {
+    position: fixed;
+    left: -40px;
+    top: 65vh;
+    transform: rotate(90deg);
+  }
+  
+  .icon-bar a {
+    display: block;
+    text-align: center;
+    padding: 5px 10px;
+    transition: all 0.3s ease;
+    color: black;
+    font-size: 12px;
+    background-color: white;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  
+  .icon-bar  a  i {
+    margin-right: 5px;
+  }
+  
+  .icon-bar a:hover {
+    background-color: #00D8FF;
+    color: white
+  }

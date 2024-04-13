@@ -1,0 +1,7 @@
+export const MODE = {
+	PvP: "PvP",
+	IA_NOOB: "IA_NOOB",
+	IA_EASY: "IA_EASY",
+	IA_MEDIUM: "IA_MEDIUM",
+	IA_CHATGPT: "IA_CHATGPT",
+};

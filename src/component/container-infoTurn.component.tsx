@@ -16,21 +16,19 @@ export const ContainerInfoTurn: React.FC<Props> = (props) => {
     const status = printStatus({available,winner,turn});
 
     return (
-        <div>
-            <div className={classes.containerInfoTurn}>
-				{status}
-				<p
-					className={
-						winner || !available
-							? `${classes.buttonRestart}`
-							: `${classes.buttonRestartHidden}`
-					}
-					onClick={restartGame}
-				>
-					⟳
-				</p>
-			</div>
-        </div>
+        <div className={classes.containerInfoTurn}>
+			{status}
+			<p
+				className={
+					winner || !available
+						? `${classes.buttonRestart}`
+						: `${classes.buttonRestartHidden}`
+				}
+				onClick={restartGame}
+			>
+				⟳
+			</p>
+		</div>
     )
 }
 

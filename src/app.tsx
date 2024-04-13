@@ -1,9 +1,18 @@
+import React from "react";
 import { Board } from "./component/board.component";
+import { MODE } from "./core";
+import { AppLayout } from "./layouts/app-layout";
 
 export const App = () => {
+  const [currentGameMode, setcurrentGameMode] = React.useState(MODE.PvP);
+
+  const changeCurrentGameMode = (newMode:string) => {
+    setcurrentGameMode(newMode);
+  }
+
   return (
-    <>
-      <Board/>
-    </>
+    <AppLayout changeCurrentGameMode={changeCurrentGameMode}>
+      <Board currentGameMode={currentGameMode}/>
+    </AppLayout>
   );
 };
