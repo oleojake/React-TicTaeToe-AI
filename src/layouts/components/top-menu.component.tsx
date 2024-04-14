@@ -1,5 +1,5 @@
 import classes from "./top-menu.component.module.css"
-import {MODE} from "../../core"
+import {MODE} from "../../core/gamestatus"
 
 interface Props {
     changeCurrentGameMode (mode:string):void;

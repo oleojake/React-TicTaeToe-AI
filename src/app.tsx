@@ -1,6 +1,6 @@
 import React from "react";
 import { Board } from "./component/board.component";
-import { MODE } from "./core";
+import { MODE } from "./core/gamestatus";
 import { AppLayout } from "./layouts/app-layout";
 
 export const App = () => {

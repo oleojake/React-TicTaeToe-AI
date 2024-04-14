@@ -1,5 +1,5 @@
-import { GitHubTag } from "./components/github-tag.component";
-import { TopMenu } from "./components/top-menu.component";
+import { GitHubTag, TopMenu } from "./components/index";
+
 
 interface Props {
     children: React.ReactNode;

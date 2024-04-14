@@ -3,7 +3,7 @@ import classes from "./board.component.module.css";
 import { Square } from "./square.component";
 import { calculateWinner } from "./helpers";
 import { ContainerInfoTurn } from "./container-infoTurn.component";
-import { isIAPlaying, isIATurn } from "../core/motor";
+import { isIAPlaying, isIATurn } from "../core/gamestatus/motor";
 import { IAMove } from "../core/IA/motor"
 
 interface Props {
@@ -20,7 +20,7 @@ export const Board: React.FC<Props> = (props) => {
 			const squareIndex : number = IAMove(currentGameMode, squares);
 			setTimeout(() => {
 				handlePlay(squareIndex)
-			}, 500);
+			}, 300);
 		}
 		//TODO: Esto falla si se cambia de IA a PvP cuando es el turno de las O's
 	},[turn]);
@@ -44,8 +44,6 @@ export const Board: React.FC<Props> = (props) => {
 		setSquares(nextSquares);
 		setTurn(!turn);
 	};
-
-	
 
 	return (
 		<div className={classes.game}>
