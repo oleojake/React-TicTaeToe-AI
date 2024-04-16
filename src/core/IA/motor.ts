@@ -1,11 +1,9 @@
 import { MODE } from "../gamestatus/gamestatus.model";
+import { getOpenIAMove } from "./api/chatgpt-openia.api";
 import { Play, TYPE } from "./ia.model";
 
-export const IAMove = (currentGameMode:string, squares: string[]) : number => {
-
+export const IAMove = (currentGameMode:string, squares: string[]): number => {
     switch(currentGameMode){
-        case MODE.IA_CHATGPT:
-            return IANoobMove(squares);
         case MODE.IA_MEDIUM:
             return IAMediumMove(squares);
         case MODE.IA_EASY:
@@ -15,7 +13,22 @@ export const IAMove = (currentGameMode:string, squares: string[]) : number => {
         default: 
             return IANoobMove(squares);
         }
+}
 
+export const OpenIAMove = async (squares: string[]): Promise<number>=> {
+    let play: Play = {
+        index: 0,
+        type: ""
+    }
+    play.index = await getOpenIAMove(squares);
+    if (play.index > 8 || squares[play.index] !== null) {
+        console.log("Ha sido modificado por IA Noob, la jugada iba a ser en: "+ play.index);
+        play = lookingForBlocking(squares);
+        if (play.type !== TYPE.BLOCK){
+            play.index = IANoobMove(squares);
+        }
+    }
+    return play.index
 }
 
 const IANoobMove = (squares: string[]) : number => {
@@ -60,6 +73,8 @@ const IAMediumMove = (squares: string[]): number=> {
     
     return play.index;
 }
+
+
 
 const lookingForWinning = (squares: string[]): Play=> {
     let play: Play = {

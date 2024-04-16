@@ -12,27 +12,25 @@ interface Props {
 }
 
 export const Square: React.FC<Props> = (props) => {
+	const {id, value, onClick, turn, currentGameMode} = props;
 	const handleClick = () => {
-		if((!isIAPlaying(props.currentGameMode)) || (isIAPlaying(props.currentGameMode) && isPlayerTurn(props.turn))){
-			props.onClick(props.id);
+		if((!isIAPlaying(currentGameMode)) || (isIAPlaying(currentGameMode) && isPlayerTurn(turn))){
+			onClick(id);
 		}
-
 	};
-
-
 
 	return (
 		<button
 			onClick={()=> {handleClick()}}
 			className={
-				props.value === null
+				value === null
 					? `${classes.square} ${classes.emptySquare}`
-					: props.value === "✕"
+					: value === "✕"
 						? `${classes.square} ${classes.notEmptySquare} ${classes.x}`
 						: `${classes.square} ${classes.notEmptySquare} ${classes.o}`
 			}
 		>
-			<span>{props.value}</span>
+			<span>{value}</span>
 		</button>
 	);
 };

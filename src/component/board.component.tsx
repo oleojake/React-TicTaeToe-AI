@@ -4,7 +4,8 @@ import { Square } from "./square.component";
 import { calculateWinner } from "./helpers";
 import { ContainerInfoTurn } from "./container-infoTurn.component";
 import { isIAPlaying, isIATurn } from "../core/gamestatus/motor";
-import { IAMove } from "../core/IA/motor"
+import { IAMove, OpenIAMove } from "../core/IA/motor"
+import { MODE } from "../core/gamestatus";
 
 interface Props {
     currentGameMode: string;
@@ -17,10 +18,19 @@ export const Board: React.FC<Props> = (props) => {
 
 	useEffect(() => {
 		if(isIAPlaying(currentGameMode) && isIATurn(turn)){
-			const squareIndex : number = IAMove(currentGameMode, squares);
-			setTimeout(() => {
-				handlePlay(squareIndex)
-			}, 300);
+			if (currentGameMode === MODE.IA_CHATGPT) {
+				const fetchData = async () => {
+					const squareIndex = await OpenIAMove(squares);
+							handlePlay(squareIndex)
+					}
+				fetchData();
+			}
+			else{
+				const squareIndex =  IAMove(currentGameMode, squares);
+				setTimeout(() => {
+					handlePlay(squareIndex)
+				}, 300);
+			}
 		}
 		//TODO: Esto falla si se cambia de IA a PvP cuando es el turno de las O's
 	},[turn]);
