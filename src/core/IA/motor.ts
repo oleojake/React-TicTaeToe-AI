@@ -2,87 +2,89 @@ import { MODE } from "../gamestatus/gamestatus.model";
 import { getOpenIAMove } from "./api/chatgpt-openia.api";
 import { Play, TYPE } from "./ia.model";
 
-export const IAMove = (currentGameMode:string, squares: string[]): number => {
-    switch(currentGameMode){
-        case MODE.IA_MEDIUM:
-            return IAMediumMove(squares);
-        case MODE.IA_EASY:
-            return IAEasyMove(squares);
-        case MODE.IA_NOOB:
-            return IANoobMove(squares);
-        default: 
-            return IANoobMove(squares);
-        }
-}
+export const OpenIAMove = async (squares: string[]): Promise<number> => {
+	let play: Play = {
+		index: 0,
+		type: "",
+	};
+	play.index = await getOpenIAMove(squares);
+	if (play.index > 8 || squares[play.index] !== null) {
+		play = lookingForWinning(squares);
+		if (play.type !== TYPE.WIN) {
+			play = lookingForBlocking(squares);
+		}
+		if (play.type !== TYPE.WIN && play.type !== TYPE.BLOCK) {
+			play.index = IANoobMove(squares);
+		}
+	}
 
-export const OpenIAMove = async (squares: string[]): Promise<number>=> {
-    let play: Play = {
-        index: 0,
-        type: ""
-    }
-    play.index = await getOpenIAMove(squares);
-    if (play.index > 8 || squares[play.index] !== null) {
-        console.log("Ha sido modificado por IA Noob, la jugada iba a ser en: "+ play.index);
-        play = lookingForBlocking(squares);
-        if (play.type !== TYPE.BLOCK){
-            play.index = IANoobMove(squares);
-        }
-    }
-    return play.index
-}
+	return play.index;
+};
 
-const IANoobMove = (squares: string[]) : number => {
-    let emptyIndexes:number[] = [];
-    for(let i = 0; i < squares.length; i++) {
-        if(squares[i] === null) {
-            emptyIndexes.push(i);
-        }
-    }
-    const randomPlay = Math.floor(Math.random() * (emptyIndexes.length - 0));
+export const IAMove = (currentGameMode: string, squares: string[]): number => {
+	switch (currentGameMode) {
+		case MODE.IA_MEDIUM:
+			return IAMediumMove(squares);
+		case MODE.IA_EASY:
+			return IAEasyMove(squares);
+		case MODE.IA_NOOB:
+			return IANoobMove(squares);
+		default:
+			return IANoobMove(squares);
+	}
+};
 
-    return emptyIndexes[randomPlay];
-}
+const IANoobMove = (squares: string[]): number => {
+	let emptyIndexes: number[] = [];
+	for (let i = 0; i < squares.length; i++) {
+		if (squares[i] === null) {
+			emptyIndexes.push(i);
+		}
+	}
+	const randomPlay = Math.floor(Math.random() * (emptyIndexes.length - 0));
 
-const IAEasyMove = (squares: string[]): number=> {
-    let play: Play = {
-        index: 0,
-        type: ""
-    }
-    play = lookingForWinning(squares);
+	return emptyIndexes[randomPlay];
+};
 
-    if (play.type !== TYPE.WIN){ 
-        play.index = IANoobMove(squares);
-    }
+const IAEasyMove = (squares: string[]): number => {
+	let play: Play = {
+		index: 0,
+		type: "",
+	};
+	play = lookingForWinning(squares);
 
-    return play.index;
-}
+	if (play.type !== TYPE.WIN) {
+		play.index = IANoobMove(squares);
+	}
 
-const IAMediumMove = (squares: string[]): number=> {
-    let play: Play = {
-        index: 0,
-        type: ""
-    }
-    play = lookingForWinning(squares);
+	return play.index;
+};
 
-    if (play.type !== TYPE.WIN){ 
-        play = lookingForBlocking(squares);
-    }
-    if (play.type !== TYPE.WIN && play.type !== TYPE.BLOCK){
-        play.index = IANoobMove(squares);
-    }
-    
-    return play.index;
-}
+const IAMediumMove = (squares: string[]): number => {
+	let play: Play = {
+		index: 0,
+		type: "",
+	};
+	play = lookingForWinning(squares);
 
+	if (play.type !== TYPE.WIN) {
+		play = lookingForBlocking(squares);
+	}
 
+	if (play.type !== TYPE.WIN && play.type !== TYPE.BLOCK) {
+		play.index = IANoobMove(squares);
+	}
 
-const lookingForWinning = (squares: string[]): Play=> {
-    let play: Play = {
-        index: 0,
-        type: ""
-    }
+	return play.index;
+};
 
-    const lines = [
+const lookingForWinning = (squares: string[]): Play => {
+	let play: Play = {
+		index: 0,
+		type: "",
+	};
+
+	const lines = [
 		[0, 1, 2],
 		[3, 4, 5],
 		[6, 7, 8],
@@ -93,39 +95,39 @@ const lookingForWinning = (squares: string[]): Play=> {
 		[2, 4, 6],
 	];
 
-    for (let i = 0; i < lines.length; i++) {
-        const [a, b, c] = lines[i];
-		if ((squares[a] === "〇" && squares[b] === "〇") || (squares[a] === "〇" && squares[c] === "〇") || (squares[b] === "〇" && squares[c] === "〇")) {
-            if(squares[a] === null) {
-                console.log("busca ganar " + a);
-                play.index =  a
-                play.type = TYPE.WIN
-                break;
-            } else if(squares[b] === null) {
-                play.index =  b
-                play.type = TYPE.WIN
-                console.log("busca ganar " + b);
-                break;
-            }
-            else if(squares[c] === null){
-                console.log("busca ganar " + c);
-                play.index =  c
-                play.type = TYPE.WIN
-                break;
-            }
+	for (let i = 0; i < lines.length; i++) {
+		const [a, b, c] = lines[i];
+		if (
+			(squares[a] === "〇" && squares[b] === "〇") ||
+			(squares[a] === "〇" && squares[c] === "〇") ||
+			(squares[b] === "〇" && squares[c] === "〇")
+		) {
+			if (squares[a] === null) {
+				play.index = a;
+				play.type = TYPE.WIN;
+				break;
+			} else if (squares[b] === null) {
+				play.index = b;
+				play.type = TYPE.WIN;
+				break;
+			} else if (squares[c] === null) {
+				play.index = c;
+				play.type = TYPE.WIN;
+				break;
+			}
 		}
 	}
 
-    return play;
-}
+	return play;
+};
 
-const lookingForBlocking = (squares: string[]): Play=> {
-    let play: Play = {
-        index: 0,
-        type: ""
-    }
+const lookingForBlocking = (squares: string[]): Play => {
+	let play: Play = {
+		index: 0,
+		type: "",
+	};
 
-    const lines = [
+	const lines = [
 		[0, 1, 2],
 		[3, 4, 5],
 		[6, 7, 8],
@@ -136,28 +138,28 @@ const lookingForBlocking = (squares: string[]): Play=> {
 		[2, 4, 6],
 	];
 
-    for (let i = 0; i < lines.length; i++) {
-        const [a, b, c] = lines[i];
-		if ((squares[a] === "✕" && squares[b] === "✕") || (squares[a] === "✕" && squares[c] === "✕") || (squares[b] === "✕" && squares[c] === "✕")) {
-            if(squares[a] === null) {
-                console.log("busca tapar " + a);
-                play.index =  a
-                play.type = TYPE.BLOCK
-                break;
-            } else if(squares[b] === null) {
-                play.index =  b
-                play.type = TYPE.BLOCK
-                console.log("busca tapar " + b);
-                break;
-            }
-            else if(squares[c] === null){
-                console.log("busca tapar " + c);
-                play.index =  c
-                play.type = TYPE.BLOCK
-                break;
-            }
+	for (let i = 0; i < lines.length; i++) {
+		const [a, b, c] = lines[i];
+		if (
+			(squares[a] === "✕" && squares[b] === "✕") ||
+			(squares[a] === "✕" && squares[c] === "✕") ||
+			(squares[b] === "✕" && squares[c] === "✕")
+		) {
+			if (squares[a] === null) {
+				play.index = a;
+				play.type = TYPE.BLOCK;
+				break;
+			} else if (squares[b] === null) {
+				play.index = b;
+				play.type = TYPE.BLOCK;
+				break;
+			} else if (squares[c] === null) {
+				play.index = c;
+				play.type = TYPE.BLOCK;
+				break;
+			}
 		}
 	}
 
-    return play;
-}
+	return play;
+};
