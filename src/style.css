@@ -128,13 +128,7 @@ q:after {
   width: 100%;
 }
 
-#root{
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  justify-content: center;
-  align-items: center;
-}
+
 
 body {
   padding: 0 20px;
