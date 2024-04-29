@@ -1,7 +1,9 @@
 # React TicTacToe vs IA
 
 The **tic-tac-toe** game developed with react components => ([live demo](https://react-tictaetoe.netlify.app/))
+
 v1.0: First release
+
 v1.1: Solved responsive on iOS
 
 ## How to Start
