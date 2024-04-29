@@ -11,11 +11,7 @@ export const AppLayout: React.FC<Props> = (props) => {
 
 	return (
 		<>
-			<TopMenu
-				changeCurrentGameMode={changeCurrentGameMode}
-				currentGameMode={currentGameMode}
-			/>
-			<GitHubTag />
+
 			{children}
 		</>
 	);
