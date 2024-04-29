@@ -36,7 +36,7 @@
 		width: 100px;
 		height: 100px;
 	}
-	.not-empty-square {
+	.not-empty-square > span {
 		font-size: 70px;
 	}
 }
