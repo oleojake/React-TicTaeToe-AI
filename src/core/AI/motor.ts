@@ -1,40 +1,40 @@
 import { MODE } from "../gamestatus/gamestatus.model";
-import { getOpenIAMove } from "./api/chatgpt-openia.api";
-import { Play, TYPE } from "./ia.model";
+import { getOpenAIMove } from "./api/chatgpt-openai.api";
+import { Play, TYPE } from "./ai.model";
 
-export const OpenIAMove = async (squares: string[]): Promise<number> => {
+export const OpenAIMove = async (squares: string[]): Promise<number> => {
 	let play: Play = {
 		index: 0,
 		type: "",
 	};
-	play.index = await getOpenIAMove(squares);
+	play.index = await getOpenAIMove(squares);
 	if (play.index > 8 || squares[play.index] !== null) {
 		play = lookingForWinning(squares);
 		if (play.type !== TYPE.WIN) {
 			play = lookingForBlocking(squares);
 		}
 		if (play.type !== TYPE.WIN && play.type !== TYPE.BLOCK) {
-			play.index = IANoobMove(squares);
+			play.index = AINoobMove(squares);
 		}
 	}
 
 	return play.index;
 };
 
-export const IAMove = (currentGameMode: string, squares: string[]): number => {
+export const AIMove = (currentGameMode: string, squares: string[]): number => {
 	switch (currentGameMode) {
-		case MODE.IA_MEDIUM:
-			return IAMediumMove(squares);
-		case MODE.IA_EASY:
-			return IAEasyMove(squares);
-		case MODE.IA_NOOB:
-			return IANoobMove(squares);
+		case MODE.AI_MEDIUM:
+			return AIMediumMove(squares);
+		case MODE.AI_EASY:
+			return AIEasyMove(squares);
+		case MODE.AI_NOOB:
+			return AINoobMove(squares);
 		default:
-			return IANoobMove(squares);
+			return AINoobMove(squares);
 	}
 };
 
-const IANoobMove = (squares: string[]): number => {
+const AINoobMove = (squares: string[]): number => {
 	let emptyIndexes: number[] = [];
 	for (let i = 0; i < squares.length; i++) {
 		if (squares[i] === null) {
@@ -46,7 +46,7 @@ const IANoobMove = (squares: string[]): number => {
 	return emptyIndexes[randomPlay];
 };
 
-const IAEasyMove = (squares: string[]): number => {
+const AIEasyMove = (squares: string[]): number => {
 	let play: Play = {
 		index: 0,
 		type: "",
@@ -54,13 +54,13 @@ const IAEasyMove = (squares: string[]): number => {
 	play = lookingForWinning(squares);
 
 	if (play.type !== TYPE.WIN) {
-		play.index = IANoobMove(squares);
+		play.index = AINoobMove(squares);
 	}
 
 	return play.index;
 };
 
-const IAMediumMove = (squares: string[]): number => {
+const AIMediumMove = (squares: string[]): number => {
 	let play: Play = {
 		index: 0,
 		type: "",
@@ -72,7 +72,7 @@ const IAMediumMove = (squares: string[]): number => {
 	}
 
 	if (play.type !== TYPE.WIN && play.type !== TYPE.BLOCK) {
-		play.index = IANoobMove(squares);
+		play.index = AINoobMove(squares);
 	}
 
 	return play.index;

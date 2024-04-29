@@ -1,6 +1,6 @@
 import classes from "./top-menu.component.module.css";
 import { MODE } from "../../core/gamestatus";
-import { API_KEY } from "../../core/IA/api/chatgpt-openia.api";
+import { API_KEY } from "../../core/AI/api/chatgpt-openai.api";
 
 interface Props {
 	currentGameMode: string;
@@ -22,31 +22,31 @@ export const TopMenu: React.FC<Props> = (props) => {
 			>
 				1vs1
 			</button>
-			<p>IA:</p>
+			<p>AI:</p>
 			<button
-				onClick={() => handleClick(MODE.IA_NOOB)}
-				className={currentGameMode === MODE.IA_NOOB ? `${classes.active}` : ``}
+				onClick={() => handleClick(MODE.AI_NOOB)}
+				className={currentGameMode === MODE.AI_NOOB ? `${classes.active}` : ``}
 			>
 				Noob
 			</button>
 			<button
-				onClick={() => handleClick(MODE.IA_EASY)}
-				className={currentGameMode === MODE.IA_EASY ? `${classes.active}` : ``}
+				onClick={() => handleClick(MODE.AI_EASY)}
+				className={currentGameMode === MODE.AI_EASY ? `${classes.active}` : ``}
 			>
 				Easy
 			</button>
 			<button
-				onClick={() => handleClick(MODE.IA_MEDIUM)}
-				className={currentGameMode === MODE.IA_MEDIUM ? `${classes.active}` : ``}
+				onClick={() => handleClick(MODE.AI_MEDIUM)}
+				className={currentGameMode === MODE.AI_MEDIUM ? `${classes.active}` : ``}
 			>
 				Medium
 			</button>
 			<button
-				onClick={() => handleClick(MODE.IA_CHATGPT)}
+				onClick={() => handleClick(MODE.AI_CHATGPT)}
 				className={
 					API_KEY === null
 						? `${classes.disabled}`
-						: currentGameMode === MODE.IA_CHATGPT
+						: currentGameMode === MODE.AI_CHATGPT
 						? `${classes.active}`
 						: ``
 				}

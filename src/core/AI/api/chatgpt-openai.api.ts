@@ -1,6 +1,6 @@
-export const API_KEY = null; // ENTER YOUR API_KEY TO PLAY VS OPENIA
+export const API_KEY = null; // ENTER YOUR API_KEY TO PLAY VS OPENAI
 
-export const getOpenIAMove = async (squares: string[]): Promise<number> => {
+export const getOpenAIMove = async (squares: string[]): Promise<number> => {
 	try {
 		const response = await fetch("https://api.openai.com/v1/chat/completions", {
 			method: "POST",

@@ -1,12 +1,12 @@
 import { MODE } from "./gamestatus.model"
 
-export const isIAPlaying = (mode:string) => {
+export const isAIPlaying = (mode:string) => {
     return (mode !== MODE.PvP)
         ? true
         : false
 }
 
-export const isIATurn = (turn: boolean) => {
+export const isAITurn = (turn: boolean) => {
     return (!turn)
         ? true
         : false

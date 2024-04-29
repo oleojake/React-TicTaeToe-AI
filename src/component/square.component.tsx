@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./square.component.module.css";
-import { isIAPlaying, isPlayerTurn } from "../core/gamestatus"
+import { isAIPlaying, isPlayerTurn } from "../core/gamestatus"
 
 
 interface Props {
@@ -15,7 +15,7 @@ export const Square: React.FC<Props> = (props) => {
 	const {id, value, onClick, turn, currentGameMode} = props;
 	
 	const handleClick = () => {
-		if((!isIAPlaying(currentGameMode)) || (isIAPlaying(currentGameMode) && isPlayerTurn(turn))){
+		if((!isAIPlaying(currentGameMode)) || (isAIPlaying(currentGameMode) && isPlayerTurn(turn))){
 			onClick(id);
 		}
 	};
