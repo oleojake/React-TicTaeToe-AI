@@ -6,7 +6,7 @@
 	border: 2px solid white;
 	width: 150px;
 	height: 150px;
-	font-size: 20px;
+	font-size: 120px;
 	cursor: pointer;
 }
 
@@ -17,7 +17,6 @@
 .not-empty-square {
 	font-size: 120px;
 	font-weight: bold;
-	transition: font-size 0.3s;
 }
 
 .x {
