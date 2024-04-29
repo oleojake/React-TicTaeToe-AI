@@ -6,6 +6,8 @@ v1.0: First release
 
 v1.1: Solved responsive on iOS
 
+[![React Tic Tae Toe](https://raw.githubusercontent.com/oleojake/oleojake/main/React%20TicTaeToe%20ai.png)](https://github.com/oleojake/react-tictaetoe-ia)
+
 ## How to Start
 Clone or download the repository and use the command npm run dev to start the game by default on port http://localhost:5173/.
 
