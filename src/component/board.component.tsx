@@ -60,7 +60,7 @@ export const Board: React.FC<Props> = (props) => {
 	};
 
 	return (
-		<>
+		<div className={classes.game}>
 			<h1 className={classes.header}>React TicTaeToe</h1>
 			<div className={classes.boardContainer}>
 				{squares.map((square, index) => (
@@ -75,6 +75,6 @@ export const Board: React.FC<Props> = (props) => {
 				))}
 			</div>
 			<ContainerInfoTurn infoSquares={squares} turn={turn} onClick={restartGame} />
-		</>
+		</div>
 	);
 };
