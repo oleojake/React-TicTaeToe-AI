@@ -1,4 +1,4 @@
-import { GitHubTag, TopMenu } from "./components/index";
+
 
 interface Props {
 	children: React.ReactNode;
@@ -7,7 +7,7 @@ interface Props {
 }
 
 export const AppLayout: React.FC<Props> = (props) => {
-	const { children, currentGameMode, changeCurrentGameMode } = props;
+	const { children} = props;
 
 	return (
 		<>
