@@ -6,7 +6,6 @@
 	border: 2px solid white;
 	width: 150px;
 	height: 150px;
-	/*font-size: 20px;*/
 	cursor: pointer;
 }
 
@@ -17,13 +16,12 @@
 .not-empty-square > span {
 	font-size: 120px;
 	font-weight: bold;
-	/*transition: font-size 0.3s;*/
+	transition: font-size 0.3s;
 }
 
 .x {
 	color: #f0f;
 	cursor: not-allowed;
-	
 }
 
 .o {
