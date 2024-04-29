@@ -6,7 +6,6 @@
 	border: 2px solid white;
 	width: 150px;
 	height: 150px;
-	
 	/*font-size: 20px;*/
 	cursor: pointer;
 }
@@ -15,7 +14,7 @@
 	background-color: rgb(0 0 0 / 77%);
 }
 
-.not-empty-square {
+.not-empty-square > span {
 	font-size: 120px;
 	font-weight: bold;
 	/*transition: font-size 0.3s;*/
